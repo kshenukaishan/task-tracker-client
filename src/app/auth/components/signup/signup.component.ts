@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -20,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
+    NgIf,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
@@ -30,8 +31,8 @@ export class SignupComponent {
 
   constructor(private formBuilder: FormBuilder) {
     this.signupForm = this.formBuilder.group({
-      name: [null, [Validators.required]],
-      email: [null, [Validators.required, Validators.email]],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
       confirmPassword: [null, [Validators.required]],
     });

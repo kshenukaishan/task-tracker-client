@@ -6,22 +6,10 @@
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
           <input matInput placeholder="Name" required />
-          <mat-error
-            *ngIf="
-              signipForm.get('name').invalid && signipForm.get('name').touched
-            "
-            >Please enter valid name</mat-error
-          >
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput placeholder="Email" required />
-          <mat-error
-            *ngIf="
-              signipForm.get('email').invalid && signipForm.get('email').touched
-            "
-            >Please enter valid email</mat-error
-          >
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
@@ -40,13 +28,6 @@
               hidePassword ? "visibility_Off" : "visibility"
             }}</mat-icon>
           </button>
-          <mat-error
-            *ngIf="
-              signipForm.get('password').invalid &&
-              signipForm.get('password').touched
-            "
-            >Please enter valid password</mat-error
-          >
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Confirm Password</mat-label>
@@ -61,13 +42,6 @@
               hidePassword ? "visibility_Off" : "visibility"
             }}</mat-icon>
           </button>
-          <mat-error
-            *ngIf="
-              signipForm.get('confirmPassword').invalid &&
-              signipForm.get('confirmPassword').touched
-            "
-            >Please enter valid confirm password</mat-error
-          >
         </mat-form-field>
         <button
           mat-raised-button
