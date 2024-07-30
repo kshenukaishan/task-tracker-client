@@ -11,6 +11,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatError, MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { AuthService } from '../../services/auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -32,7 +35,12 @@ export class SignupComponent {
   signupForm!: FormGroup;
   hidePassword = true;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {
     this.signupForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -47,5 +55,29 @@ export class SignupComponent {
 
   onSubmit() {
     console.log(this.signupForm.value);
+    const password = this.signupForm.get('password')?.value;
+    const confirmPassword = this.signupForm.get('confirmPassword')?.value;
+    if (password != confirmPassword) {
+      this.snackBar.open('Password not matched', 'Close', {
+        duration: 2000,
+        panelClass: 'error-snackbar',
+      });
+      return;
+    }
+
+    this.authService.signup(this.signupForm.value).subscribe((res) => {
+      console.log(res);
+      if (res.id == null) {
+        this.snackBar.open('User registered successfully!', 'Close', {
+          duration: 2000,
+        });
+        this.router.navigateByUrl('/login');
+      } else {
+        this.snackBar.open('User register failed!', 'Close', {
+          duration: 2000,
+          panelClass: 'error-snackbar',
+        });
+      }
+    });
   }
 }
