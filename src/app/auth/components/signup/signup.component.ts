@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
-  FormGroupDirective,
-  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -25,7 +23,7 @@ import { MatInputModule } from '@angular/material/input';
     MatError,
     MatButtonModule,
     ReactiveFormsModule,
-    NgIf,
+    CommonModule,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
