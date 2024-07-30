@@ -5,16 +5,36 @@
       <form [formGroup]="signupForm">
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
-          <input matInput placeholder="Name" required />
+          <input matInput formControlName="name" placeholder="Name" required />
+          <mat-error
+            *ngIf="
+              signupForm.get('name')?.invalid && signupForm.get('name')?.touched
+            "
+            >Please enter a valid Name</mat-error
+          >
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" required />
+          <input
+            matInput
+            matInput
+            formControlName="email"
+            placeholder="Email"
+            required
+          />
+          <mat-error
+            *ngIf="
+              signupForm.get('email')?.invalid &&
+              signupForm.get('email')?.touched
+            "
+            >Please enter a valid Email</mat-error
+          >
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
           <input
             matInput
+            formControlName="password"
             placeholder="Password"
             required
             type="{{ hidePassword ? 'password' : 'text' }}"
@@ -28,11 +48,19 @@
               hidePassword ? "visibility_Off" : "visibility"
             }}</mat-icon>
           </button>
+          <mat-error
+            *ngIf="
+              signupForm.get('password')?.invalid &&
+              signupForm.get('password')?.touched
+            "
+            >Please enter a valid Password</mat-error
+          >
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Confirm Password</mat-label>
           <input
             matInput
+            formControlName="confirmPassword"
             placeholder="Confirm Password"
             required
             type="{{ hidePassword ? 'password' : 'text' }}"
@@ -42,6 +70,13 @@
               hidePassword ? "visibility_Off" : "visibility"
             }}</mat-icon>
           </button>
+          <mat-error
+            *ngIf="
+              signupForm.get('confirmPassword')?.invalid &&
+              signupForm.get('confirmPassword')?.touched
+            "
+            >Please enter a valid Password</mat-error
+          >
         </mat-form-field>
         <button
           mat-raised-button

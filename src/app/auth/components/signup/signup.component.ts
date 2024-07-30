@@ -9,8 +9,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatError, MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +19,9 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     MatCardModule,
     MatFormFieldModule,
+    MatInputModule,
     MatIconModule,
+    MatError,
     ReactiveFormsModule,
     NgIf,
   ],
