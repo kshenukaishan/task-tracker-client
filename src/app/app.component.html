@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!isAdminLoggedIn && !isEmployeeLoggedIn">
   <mat-toolbar color="primary" class="navbar">
     <span class="navbar-brand">Task Tracker</span>
     <span class="spacer"></span>
@@ -7,6 +7,34 @@
     </button>
     <button mat-button routerLink="/login" routerLinkActive="active">
       Login
+    </button>
+  </mat-toolbar>
+</div>
+<div *ngIf="isAdminLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">Admin Page</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">
+      Dashboard
+    </button>
+    <button mat-button (click)="logout()" routerLinkActive="active">
+      Logout
+    </button>
+  </mat-toolbar>
+</div>
+<div *ngIf="isEmployeeLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">Employee Page</span>
+    <span class="spacer"></span>
+    <button
+      mat-button
+      routerLink="/employee/dashboard"
+      routerLinkActive="active"
+    >
+      Dashboard
+    </button>
+    <button mat-button (click)="logout()" routerLinkActive="active">
+      Logout
     </button>
   </mat-toolbar>
 </div>
