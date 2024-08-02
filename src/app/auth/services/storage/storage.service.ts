@@ -46,7 +46,7 @@ export class StorageService {
     if (this.getTtoken() === null) {
       return false;
     } else {
-      const role: string = this.getTtoken();
+      const role: string = this.getUserRole();
       return role == 'ADMIN';
     }
   }
@@ -55,8 +55,8 @@ export class StorageService {
     if (this.getTtoken() === null) {
       return false;
     } else {
-      const role: string = this.getTtoken();
-      return role == 'USER';
+      const role: string = this.getUserRole();
+      return role == 'EMPLOYEE';
     }
   }
 

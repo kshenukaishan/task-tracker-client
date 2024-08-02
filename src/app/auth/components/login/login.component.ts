@@ -1,4 +1,4 @@
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
@@ -62,15 +62,16 @@ export class LoginComponent {
         };
         StorageService.saveUser(user);
         StorageService.saveToken(res.jwt);
-        if (StorageService.isAdminLogged())
+        if (StorageService.isAdminLogged()) {
           this.router.navigate(['/admin/dashboard']);
-        else if (StorageService.isUserLogged())
+        } else if (StorageService.isUserLogged()) {
           this.router.navigate(['/employee/dashboard']);
+        }
         this.snackBar.open('User Logged successfully!', 'Close', {
           duration: 2000,
         });
       } else {
-        this.snackBar.open('Wrong Credentials!', 'Close', {
+        this.snackBar.open('Invalid Credentials!', 'Close', {
           duration: 2000,
           panelClass: 'error-snackbar',
         });

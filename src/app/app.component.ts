@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
+import { AdminModule } from './modules/admin/admin.module';
+import { EmployeeModule } from './modules/employee/employee.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatToolbarModule, RouterLink],
+  imports: [
+    RouterOutlet,
+    MatToolbarModule,
+    RouterLink,
+    AdminModule,
+    EmployeeModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
