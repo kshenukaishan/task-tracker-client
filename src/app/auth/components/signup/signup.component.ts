@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../services/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -27,6 +27,7 @@ import { Router } from '@angular/router';
     MatButtonModule,
     ReactiveFormsModule,
     CommonModule,
+    RouterModule,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
@@ -67,11 +68,11 @@ export class SignupComponent {
 
     this.authService.signup(this.signupForm.value).subscribe((res) => {
       console.log(res);
-      if (res.id == null) {
+      if (res.id != null) {
         this.snackBar.open('User registered successfully!', 'Close', {
           duration: 2000,
         });
-        this.router.navigateByUrl('/login');
+        this.router.navigate(['/login']);
       } else {
         this.snackBar.open('User register failed!', 'Close', {
           duration: 2000,
