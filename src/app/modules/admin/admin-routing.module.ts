@@ -9,6 +9,13 @@ const routes: Routes = [
         (cmp) => cmp.DashboardComponent
       ),
   },
+  {
+    path: 'task',
+    loadComponent: () =>
+      import('../admin/components/post-task/post-task.component').then(
+        (cmp) => cmp.PostTaskComponent
+      ),
+  },
 ];
 
 @NgModule({
