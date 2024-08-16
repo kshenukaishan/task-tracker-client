@@ -27,6 +27,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-task',
@@ -61,7 +63,9 @@ export class PostTaskComponent {
 
   constructor(
     private adminService: AdminService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private matSnackBar: MatSnackBar,
+    private router: Router
   ) {
     this.getUsers();
     this.taskForm = this.formBuilder.group({
@@ -82,5 +86,17 @@ export class PostTaskComponent {
 
   postTask() {
     console.log(this.taskForm.value);
+    this.adminService.postTask(this.taskForm.value).subscribe((res) => {
+      if (res.id != null) {
+        this.matSnackBar.open('Task added successfully!', 'Close', {
+          duration: 2000,
+        });
+        this.router.navigate(['/admin/dashboard']);
+      } else {
+        this.matSnackBar.open('Something wen wrong!', 'Close', {
+          duration: 2000,
+        });
+      }
+    });
   }
 }
