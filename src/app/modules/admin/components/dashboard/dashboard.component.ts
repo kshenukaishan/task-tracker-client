@@ -6,6 +6,7 @@ import { MatDivider } from '@angular/material/divider';
 import { NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +18,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatDivider,
     NgFor,
     MatIconModule,
+    RouterLink,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',

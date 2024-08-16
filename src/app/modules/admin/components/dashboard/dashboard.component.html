@@ -24,6 +24,14 @@
       </div>
       <mat-divider></mat-divider>
       <div class="actions">
+        <a
+          mat-icon-button
+          color="primary"
+          class="update-button"
+          [routerLink]="'/admin/task/' + task.id + '/edit'"
+          href=""
+          ><mat-icon>edit</mat-icon></a
+        >
         <button
           mat-icon-button
           color="warn"

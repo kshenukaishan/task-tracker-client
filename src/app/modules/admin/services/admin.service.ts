@@ -41,6 +41,12 @@ export class AdminService {
     });
   }
 
+  updateTask(id: number, taskDto: any): Observable<any> {
+    return this.http.put(BASE_URL + `api/v1/admin/task/${id}/edit`, taskDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set(
       'Authorization',
