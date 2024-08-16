@@ -35,6 +35,12 @@ export class AdminService {
     });
   }
 
+  getTaskById(id: number): Observable<any> {
+    return this.http.get(BASE_URL + 'api/v1/admin/task/' + id, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set(
       'Authorization',

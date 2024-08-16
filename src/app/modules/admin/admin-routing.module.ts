@@ -16,6 +16,13 @@ const routes: Routes = [
         (cmp) => cmp.PostTaskComponent
       ),
   },
+  {
+    path: 'task/:id/edit',
+    loadComponent: () =>
+      import('../admin/components/update-task/update-task.component').then(
+        (cmp) => cmp.UpdateTaskComponent
+      ),
+  },
 ];
 
 @NgModule({
