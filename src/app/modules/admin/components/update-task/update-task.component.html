@@ -60,6 +60,20 @@
       </mat-form-field>
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Select the Employee</mat-label>
+        <mat-select formControlName="taskStatus" name="taskStatus">
+          <mat-option
+            *ngFor="let taskStatus of listOfTaskStatus"
+            [value]="taskStatus"
+            >{{ taskStatus }}</mat-option
+          >
+        </mat-select>
+        <mat-error
+          *ngIf="updateTaskForm.get('taskStatus')?.hasError('required')"
+          >This input is Required!</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Select the Employee</mat-label>
         <mat-select formControlName="employeeId" name="employeeId">
           <mat-option
             *ngFor="let employee of listOfEmployees"

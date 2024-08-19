@@ -47,6 +47,12 @@ export class AdminService {
     });
   }
 
+  saerchTask(title: string): Observable<any> {
+    return this.http.get(BASE_URL + `api/v1/admin/tasks/search/${title}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set(
       'Authorization',

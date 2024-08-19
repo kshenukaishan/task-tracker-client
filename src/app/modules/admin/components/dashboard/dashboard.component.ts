@@ -7,13 +7,17 @@ import { NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouterLink } from '@angular/router';
+import { MatInputModule } from '@angular/material/input';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
     MatFormFieldModule,
+    ReactiveFormsModule,
     MatCardModule,
+    MatInputModule,
     MatLabel,
     MatDivider,
     NgFor,
@@ -25,18 +29,22 @@ import { RouterLink } from '@angular/router';
 })
 export class DashboardComponent {
   listOfTasks: any = [];
+  searchForm!: FormGroup;
 
   constructor(
     private adminService: AdminService,
-    private matSnackBar: MatSnackBar
+    private matSnackBar: MatSnackBar,
+    private formBuilder: FormBuilder
   ) {
     this.getAllTasks();
+    this.searchForm = this.formBuilder.group({
+      title: [null],
+    });
   }
 
   getAllTasks() {
     this.adminService.getAllTasks().subscribe((res) => {
       this.listOfTasks = res;
-      console.log(this.listOfTasks);
     });
   }
 
@@ -44,6 +52,14 @@ export class DashboardComponent {
     this.adminService.deleteTask(id).subscribe((res) => {
       this.matSnackBar.open('Task has deleted', 'Close', { duration: 2000 });
       this.getAllTasks();
+    });
+  }
+
+  searchTask() {
+    this.listOfTasks = [];
+    const title = this.searchForm.get('title')?.value;
+    this.adminService.saerchTask(title).subscribe((res) => {
+      this.listOfTasks = res;
     });
   }
 }
