@@ -17,6 +17,12 @@ export class EmployeeService {
     });
   }
 
+  updateStatus(id: number, status: string): Observable<any> {
+    return this.http.get(BASE_URL + `api/v1/employee/tasks/${id}/${status}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set(
       'Authorization',

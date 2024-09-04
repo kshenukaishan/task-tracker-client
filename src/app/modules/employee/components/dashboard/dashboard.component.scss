@@ -48,6 +48,20 @@
           }
         }
       }
+
+      .actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+
+        .update-button {
+          margin-right: 10px;
+        }
+
+        .view-button {
+          margin-right: 10px;
+        }
+      }
     }
   }
 }
